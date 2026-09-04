@@ -1,7 +1,6 @@
 ---
 name: unslop
-description: Cut AI tells from any writing. Must always apply.
-disable-model-invocation: true
+description: "Use on any prose before it ships, or when Courtney says 'unslop', 'cut the AI tells', or 'does this read as AI'. Removes AI vocabulary, filler, and mannered phrasing."
 ---
 
 # Unslop
