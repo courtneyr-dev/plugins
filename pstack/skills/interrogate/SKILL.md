@@ -32,20 +32,19 @@ Write one clear paragraph. If you're unsure about the intent, ask the user befor
 
 ## Step 3, Spawn Reviewers
 
-Launch all reviewers in a single message using the Agent tool. Use the `interrogate reviewers` panel per the pack's `~/.claude/skills/poteto-mode/references/models.md` (not this skill's `references/` folder), one reviewer per entry, extending or shrinking the Reviewer A/B/C/D labels below to the panel's entry count. Otherwise use the table defaults.
+Launch all reviewers in a single message using the Agent tool. Use the `interrogate reviewers` panel per the pack's `~/.claude/skills/poteto-mode/references/models.md` (not this skill's `references/` folder), one reviewer per entry, extending or shrinking the Reviewer A/B/C labels below to the panel's entry count. If the role is missing, use the table defaults.
 
 | Subagent | Default model |
 |----------|---------------|
 | Reviewer A | per `~/.claude/skills/poteto-mode/references/models.md`, role interrogate reviewer A |
 | Reviewer B | per `~/.claude/skills/poteto-mode/references/models.md`, role interrogate reviewer B (runs through the `counselors` skill, not as an Agent) |
 | Reviewer C | per `~/.claude/skills/poteto-mode/references/models.md`, role interrogate reviewer C |
-| Reviewer D | per `~/.claude/skills/poteto-mode/references/models.md`, role interrogate reviewer D |
 
 For each reviewer:
 - `subagent_type`: `Explore` (read-only agent)
-- `model`: the `interrogate reviewers` entry in `~/.claude/skills/poteto-mode/references/models.md`, or the table default with no configured line
+- `model`: the `interrogate reviewers` entry in `~/.claude/skills/poteto-mode/references/models.md`, or the table default with no configured line. For an `inherit` entry, omit `model` so that reviewer runs on the parent model.
 
-If a model slug is rejected as unresolvable when you try to spawn the subagent, check the valid values in the Agent tool's error message, pick the closest equivalent (prefer the highest-reasoning tier of the same family), spawn with the valid slug, and open a separate PR to update the configured value or default table. Do not block the review on the slug issue. If the configured value is `inherit-parent` or `auto`, omit `model` instead. Never treat those aliases as broken slugs or enter this fallback for them.
+If the Agent tool rejects a configured entry, run that reviewer on `opus`, `max` and say so. If it rejects that too, check the valid values in the Agent tool's error message, pick the closest equivalent (prefer the highest effort), spawn with it, and open a separate PR to update `models.md`. Do not block the review on the model issue. Never treat an `inherit` or `counselors` entry as a rejected value or apply either fallback to it.
 
 Read `references/reviewer-prompt.md` and fill in the template with:
 1. The stated intent

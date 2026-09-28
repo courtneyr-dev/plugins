@@ -21,15 +21,15 @@ Open a todolist with one entry per phase before launching anything.
 1. State the done predicate and the artifact or report the swarm must return.
 2. Choose the shape. Partition into slices, race N workers on identical briefs, or mix both. For a race or mixed shape, declare `first pass`, `rank all`, or `best-of` before spawning.
 3. Set N from the user or derive it from the shape. N is total workers, not a concurrency limit. Cap N at 8 per wave unless the user names a larger number; past that, run waves of 8 and drain each before the next. Don't swarm when one worker could finish the brief inside its own budget: run one `Agent` call, or do it yourself.
-4. Worker model and effort per `~/.claude/skills/poteto-mode/references/models.md`, role `swarm workers`. For a model race, name each arm's model and effort up front.
-5. Give each worker its own writable output when it writes.
+4. Worker model and effort per `~/.claude/skills/poteto-mode/references/models.md`, role `swarm workers`. For `inherit`, omit `model` so the workers run on the parent model. If the Agent tool rejects a value, use the closest valid model and effort from its error message and say so. For a model race, name each arm's model and effort up front.
+5. Give each worker its own writable output when it writes. When workers verify or measure commits, each brief names the exact SHAs. A measurement brief also names the method (sample count, what one sample is, order). The worker records both in its result.
 
 ## Phase B: Fan out
 
 Spawn all N workers in one message, one `Agent` call each:
 
 - `subagent_type: general-purpose`
-- `model` and `effort` from the `swarm workers` role line
+- `model` and `effort` from step 4, with `model` left unset for `inherit`
 - `run_in_background: true`
 - `isolation: worktree` when the worker writes; `isolation: remote` only when a cloud runner is available and the worker needs nothing on the user's computer
 
@@ -37,13 +37,13 @@ When a worker must start from a non-default branch, name the branch in its brief
 
 While the wave runs, the lead keeps working: lay out the result table with one row per slice or arm, and read each terminal result as its notification arrives instead of waiting for the whole wave.
 
-Every brief stands alone. Include the goal, scope, exact slice or race arm, how to verify, and what to report. Reports use `PASS`, `ISSUES`, or `BLOCKED` with evidence.
+Every brief stands alone. Include the goal, scope, exact slice or race arm, how to verify, and what to report. Reports use `PASS`, `ISSUES`, or `BLOCKED` with evidence. A worker that can prove a defect reports `ISSUES` and lists every issue it can prove, not only the first.
 
 If a worker drops out, proceed with N-1 and note it.
 
 ## Phase C: Aggregate
 
-Read the terminal results. For coverage, every required slice needs a result. For a race, apply the selection rule declared up front. Use first pass, rank all, or best-of. Do not paste raw worker dumps.
+Read the terminal results. Drop a result that does not record the SHAs and method its brief names, and rerun that worker once. After a second miss, record a gap. A gap does not count as a pass. For coverage, every required slice needs a result. For a race, apply the selection rule declared up front. Use first pass, rank all, or best-of. Do not paste raw worker dumps.
 
 Keep a compact result table, one-line evidenced issues, and explicit gaps or dropouts.
 

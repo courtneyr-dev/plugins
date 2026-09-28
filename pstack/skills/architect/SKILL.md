@@ -29,7 +29,7 @@ Skip Phase A only when the work is genuinely greenfield with no surrounding syst
 
 Run the **arena** skill with the design-sketch task and the Phase A grounding artifacts. Pass `references/runner-prompt.md` as each runner's prompt. Each candidate produces a design package shaped per `references/rationale-template.md`.
 
-Runner model and effort per the pack's `~/.claude/skills/poteto-mode/references/models.md`, role `architect runners` (three by default). Cap the panel at that list; add a slot only for a named extra design direction. While the runners work in the background, keep working: re-read the Phase A model against `references/design-red-flags.md` so the screen below is ready when candidates land.
+Take the runners' model and effort from the pack's `~/.claude/skills/poteto-mode/references/models.md`, role `architect runners` (two by default), in place of the `arena runners` role. Alias and rejected entries follow the runner rules in the **arena** skill's Phase A. Cap the panel at that list; add a slot only for a named extra design direction. While the runners work in the background, keep working: re-read the Phase A model against `references/design-red-flags.md` so the screen below is ready when candidates land.
 
 Design it twice. Require at least two structurally distinct candidates before synthesis, even when the first looks sufficient. This is the **exhaust-the-design-space** principle skill made concrete. Whole-shape alternatives, not point fixes inside one shape.
 

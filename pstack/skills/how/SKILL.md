@@ -7,6 +7,8 @@ description: "Use when Courtney asks 'how does X work', wants a code walkthrough
 
 Explore the codebase to answer "how does X work?" questions. Produce architectural explanations at the level of a senior engineer onboarding onto a subsystem, enough to build a working mental model, not so much that it reads like annotated source code.
 
+Each spawn below names a role in the pack's `~/.claude/skills/poteto-mode/references/models.md`. Pass that role's `model` and `effort`. Leave `model` unset when the value is `inherit`. If the Agent tool rejects a value, use the closest valid model and effort from its error message and say so.
+
 ## Step 1. Assess Complexity
 
 If the scope is ambiguous, state your interpretation and explore. The user can redirect.
