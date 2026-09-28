@@ -1,6 +1,6 @@
 ---
 name: unslop
-description: "Use on any prose before it ships, or when Courtney says 'unslop', 'cut the AI tells', or 'does this read as AI'. Removes AI vocabulary, filler, and mannered phrasing."
+description: "Use on any prose before it ships, or when Courtney says 'unslop', 'cut the AI tells', or 'does this read as AI'. Removes AI vocabulary, filler, and mannered phrasing. Prompts and system prompts go to prompt-engineering."
 ---
 
 # Unslop
@@ -12,6 +12,7 @@ Edit text to remove AI patterns.
 1. Scan for the patterns below.
 2. Rewrite. Preserve meaning, match intended tone.
 3. Self-audit: "What makes this obviously AI generated?" Fix remaining tells.
+4. When asked to review rather than rewrite, return one line per pattern group below: ✓ none found, ⚠ one or two, ✗ three or more, with the worst instance quoted. Follow with a "What's working" line naming what already reads as human, so a rewrite keeps it.
 
 ## Patterns to detect and fix
 
