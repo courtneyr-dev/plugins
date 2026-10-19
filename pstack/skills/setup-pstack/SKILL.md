@@ -27,3 +27,4 @@ Rewrite the role table in `~/.claude/skills/poteto-mode/references/models.md` (i
 5. **Write.** Rewrite the whole table so re-runs stay idempotent, with a budget line above it that names the chosen label and its target effort (`Budget: large (xhigh)`); keep the header and notes.
 6. **Confirm.** Report the written table. Skills read it on each run; no restart.
 7. **Offer verification.** If the project has no `verify-*` skill or harness, offer once to generate one with `/create-verification-skill`.
+8. **Offer formal verification.** If the project has no formal verification skill (a project skill that runs a model checker, a proof, or another verifier against the code), offer once to generate one with `/create-formal-verification-skill`, so agents can prove a key property of the code holds in every case in scope, not only the cases tests reach. On no, move on without pushing.

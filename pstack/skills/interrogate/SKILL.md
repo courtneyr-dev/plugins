@@ -34,7 +34,7 @@ Each reviewer gets `subagent_type: Explore` (read-only agent) and `model` and `e
 
 If the Agent tool rejects a configured entry, run that reviewer on `opus`, `xhigh` and say so. If it rejects that too, spawn with the closest equivalent from the valid values in its error message (prefer the same model and effort tier), and open a separate PR to update `models.md`. Do not block the review on the model issue. Never treat an `inherit` or `counselors` entry as a rejected value or apply either fallback to it.
 
-Read `references/reviewer-prompt.md` and fill in the same template for every reviewer with the stated intent, the diff or file contents, the rubric from `references/rubric.md`, and the code-quality lens from `references/code-quality-review.md`.
+Read `references/reviewer-prompt.md` and fill in the same template for every reviewer with the stated intent, the diff or file contents, the rubric from `references/rubric.md`, and the code-quality lens from `references/code-quality-review.md`. Pick each subagent's `effort` for the job, per the Subagents section of the **poteto-mode** skill.
 
 ## Step 4, Synthesize
 

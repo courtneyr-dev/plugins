@@ -7,7 +7,7 @@ description: "Use when Courtney asks 'how does X work', wants a code walkthrough
 
 Explore the codebase to answer "how does X work?" questions. Produce architectural explanations at the level of a senior engineer onboarding onto a subsystem, enough to build a working mental model, not so much that it reads like annotated source code.
 
-Every spawn is an Agent subagent with `subagent_type: Explore` (read-only agent). Explorers use role how explorer and every explainer uses role how explainer, per the pack's `~/.claude/skills/poteto-mode/references/models.md` (not this skill's `references/` folder). Pass that role's `model` and `effort`. Leave `model` unset when the value is `inherit`. If the Agent tool rejects a value, use the closest valid model and effort from its error message and say so.
+Every spawn is an Agent subagent with `subagent_type: Explore` (read-only agent). Explorers use role how explorer and every explainer uses role how explainer, per the pack's `~/.claude/skills/poteto-mode/references/models.md` (not this skill's `references/` folder). Pass that role's `model` and `effort`. Leave `model` unset when the value is `inherit`. If the Agent tool rejects a value, use the closest valid model and effort from its error message and say so. Pick each subagent's `effort` for the job, per the Subagents section of the **poteto-mode** skill.
 
 ## 1. Assess complexity
 

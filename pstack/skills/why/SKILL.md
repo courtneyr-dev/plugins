@@ -7,7 +7,7 @@ description: "Use when Courtney asks 'why does X work this way', 'why did we pic
 
 Investigate the motivation and intent behind code. The companion `how` skill answers what the code does and how it works. `why` answers what forces led to its shape.
 
-Each spawn below names a role in the pack's `~/.claude/skills/poteto-mode/references/models.md`. Pass that role's `model` and `effort`. Leave `model` unset when the value is `inherit`. If the Agent tool rejects a value, use the closest valid model and effort from its error message and say so.
+Each spawn below names a role in the pack's `~/.claude/skills/poteto-mode/references/models.md`. Pass that role's `model` and `effort`. Leave `model` unset when the value is `inherit`. If the Agent tool rejects a value, use the closest valid model and effort from its error message and say so. Pick each subagent's `effort` for the job, per the Subagents section of the **poteto-mode** skill.
 
 Every spawn is `subagent_type: general-purpose`, a read-write Agent (the default). **Do not use the read-only `Explore` agent.** It has no MCP tools, which disables the MCP-backed investigators and the synthesizer's citation spot-checks. Investigators still shouldn't write anything.
 

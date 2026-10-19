@@ -24,7 +24,7 @@ That covers the flat (`<id>.jsonl`) and subagent (`<parent>/subagents/agent-<chi
 
 One message, three `Agent` calls, `subagent_type: general-purpose`. Reviewers need MCP access to look up the tickets, chat threads, and observability traces the transcript references, and the read-only `Explore` agent has no MCP tools.
 
-Each reviewer and the synthesizer name a role in the pack's `~/.claude/skills/poteto-mode/references/models.md`. Pass that role's `model` and `effort`. Leave `model` unset when the value is `inherit`. If the Agent tool rejects a value, use the closest valid model and effort from its error message and say so.
+Each reviewer and the synthesizer name a role in the pack's `~/.claude/skills/poteto-mode/references/models.md`. Pass that role's `model` and `effort`. Leave `model` unset when the value is `inherit`. If the Agent tool rejects a value, use the closest valid model and effort from its error message and say so. Pick each subagent's `effort` for the job, per the Subagents section of the **poteto-mode** skill.
 
 | Lens | `model` | Prompt template |
 |---|---|---|
