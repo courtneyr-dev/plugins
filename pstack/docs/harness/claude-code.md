@@ -32,7 +32,7 @@ pstack skills use Cursor names. In Claude Code, read this file once per session,
 | Cursor | Claude Code |
 | --- | --- |
 | `claude-<family>-<version>-<effort>[-fast]`, such as `claude-opus-5-5-xhigh` | `model: "opus"` and `effort: "xhigh"`. `model` takes only `opus`, `sonnet`, `haiku`, `fable`. Drop `-fast`. |
-| A `grok-*`, `gpt-*`, or other non-Claude slug | Use the port in the "Upstream string → port" table of `~/.claude/skills/poteto-mode/references/models.md`: a `grok-*` slug is `model: "sonnet"` and `effort: "high"`, and a `gpt-*` second-opinion slot runs through the `counselors` skill. For a slug that table doesn't list, omit `model` so the agent runs on the session model, and say so. |
+| A `gemini-*` or other non-Claude slug | Omit `model` so the agent runs on the session model, and say so. A slug that the "Upstream string → port" table of `~/.claude/skills/poteto-mode/references/models.md` lists, such as an older `grok-*` or `gpt-*` slug, takes that port instead. |
 | `auto` or `inherit-parent` | Omit `model`. |
 | The `pstack-models.mdc` rule, `~/.cursor/rules/pstack-models.mdc` | `~/.claude/skills/poteto-mode/references/models.md`. Skills read it on each run, so look up the role there. If the file or the role's line is missing, use the skill's default slug. |
 | A role value `<model> <effort>`, such as `opus high` | `model: "opus"` and `effort: "high"`. |
@@ -42,7 +42,7 @@ pstack skills use Cursor names. In Claude Code, read this file once per session,
 `setup-pstack` writes its role table to `~/.claude/skills/poteto-mode/references/models.md`, which every skill reads on each run. Follow its steps with these changes:
 
 - Detect. The detected models are the `model` values that the `Agent` tool schema lists, each with an effort from its `effort` values. Write a real model as `<model> <effort>`, such as `opus xhigh`. The effort is the last token, so the budget step works as written.
-- Defaults. Map each default slug with the rows above: `claude-opus-5-5-xhigh` is `opus xhigh`, and `grok-4.7-xhigh-fast` is `sonnet high`.
+- Defaults. Map each default slug with the rows above: `claude-opus-5-5-xhigh` is `opus xhigh`, `claude-opus-5-5-high-fast` is `opus high`, `claude-fable-5-2-max` is `fable max`, and `gemini-4-carbon-high` is `counselors` in a judge or reviewer slot and drops out of a runner panel.
 - Write. Rewrite the whole role table in `~/.claude/skills/poteto-mode/references/models.md`, with the budget line above it and one row per role from step 5. Never put the role lines in `CLAUDE.md` or `AGENTS.md`.
 
 ## Paths
